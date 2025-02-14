@@ -1,0 +1,76 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <h1>This is about page</h1>
+
+        {% for d in data            %}
+        =====================
+        {% for key in d  %}
+        
+            {{d[key]}}
+
+        {% endfor        %}
+        <br>
+        {% endfor                   %}
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center;">User Information</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Roll Number</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in data %}
+            <tr>
+                <td>{{ d.name }}</td>
+                <td>{{ d.email }}</td>
+                <td>{{ d.roll }}</td>  <!-- Corrected key here -->
+                <td>{{ d.course }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+

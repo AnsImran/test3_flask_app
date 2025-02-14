@@ -2,9 +2,7 @@
 # to run the server
 
 
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request
 
 app = Flask(__name__) #ye name ka parameter hay # when we create private variables we use __, when we want to create public variable we dont use "underscore". see nasir hussains lecs on OOP in i guess 1st quarter
 
@@ -14,26 +12,36 @@ app = Flask(__name__) #ye name ka parameter hay # when we create private variabl
 # def home():
 #     return "Hello Python with Flask"
 
-# OR
+# # OR
 
 # # ab string response k bajaye, page ko render krvayain gay
 # # from flask import render
 # @app.route("/")
 # def home():
-#     return render_template("home.html", name)
+#     return render_template("home.html")
 
 # OR
 
-# sending data from backend to frontend
+# # sending data from backend to frontend
+# @app.route("/")
+# def home():
+#     name = input("User please tell me your name") # input lia, (ye terminal(console) k andar input lay ga)
+
+#     return render_template("home.html", data = {'name': name})     # input html ko bhaij dia. | page k sath sath name bhi display kr do
+# # Respone: data = {'name': name} : should always be in the form of dictionary
+# # How It Works?
+# #     The data={'name': name} dictionary is passed from Python to the template.
+# #     Jinja2 syntax ({{ data.name }}) is used inside the HTML to dynamically insert the name.
+
+
+
+data = {} # khali dictionary bnai
 @app.route("/")
 def home():
-    name = input("User please tell me your name") # input lia, (ye terminal(console) k andar input lay ga)
+    name = input("User please tell me your name")
+    data['name'] = name #jo name input hua osay data-dictionary main daal dia
+    return render_template("home.html", data = {'name': name})
 
-    return render_template("home.html", data = {'name': name})     # input html ko bhaij dia. | page k sath sath name bhi display kr do
-# Respone: data = {'name': name} : should always be in the form of dictionary
-# How It Works?
-#     The data={'name': name} dictionary is passed from Python to the template.
-#     Jinja2 syntax ({{ data.name }}) is used inside the HTML to dynamically insert the name.
 
 
 
@@ -61,7 +69,7 @@ def ftob():
         num1 = int(request.form['num1'])
         num2 = int(request.form['num2'])
         result = num1+num2
-            return render_template("f-to-b.html", result = {'result': result})
+        return render_template("f-to-b.html", result = {'result': result})
 
 # going directly to this page
     else:
