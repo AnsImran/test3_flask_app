@@ -1,0 +1,18 @@
+inside terminal, in visual studio, run these commands.
+do not run them in powershell, run them in command prompt
+
+python -m venv venv              run this line inside the folder in which u want to create the environment
+
+venv\Scripts\activate.bat        run this line to activate the virtual environment. (venv) will start to appear in front of the address. jab tak ye address k shuru main show ho raha hay, tab tk virtual environment active hay.
+
+pip install -r requirements.txt  install the necessary packages in the virtual environment
+
+
+1:26 api.py
+
+
+
+
+
+
+
