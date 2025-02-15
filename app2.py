@@ -19,8 +19,7 @@ def home():
         data.append(record1) # APPEND!!! yani page par bar bar records add krtay jao gay tu vo dictionaries add hoti jayian giiii
 
     return render_template("home2.html")
-    # else:
-    #     return render_template("home2.html", data=data)
+
 
 
 @app.route("/about2")

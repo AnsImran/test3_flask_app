@@ -10,7 +10,7 @@ stores = [
                 'name': 'flowers',
                 'price': 100
             }
-        ]
+                 ]
     },
     {
         'name': 'beautiful store 2',
@@ -23,28 +23,30 @@ stores = [
     }
 ]
 
+
 @app.route('/')
 def home():
     return "Hello to Api"
 
-@app.route('/store', methods=['POST'])
+
+@app.route('/store', methods=['POST']) # in '/store', 'store' is an endpoint. 5000 e.g, port hogi.
 def create_store():
     request_data = request.get_json()
     new_store = {
         'name': request_data['name'],
-        'items': []
+        'items': []                    # sirf store add kar rahay hain. items add nahi kar rahay
     }
-    stores.append(new_store)
-    return jsonify(new_store)
+    stores.append(new_store)           # stores ki list main appended
+    return jsonify(new_store)          
 
-@app.route('/store/<string:name>')
+@app.route('/store/<string:name>')     # <string:name>: store ka name. e.g: beautiful store, beautiful store2 and beautiful store3 etc ...
 def get_store_name(name):
     for store in stores:
         if store['name'] == name:
             return jsonify(store)
     return jsonify({'message': 'store not found'})
 
-@app.route('/store')
+@app.route('/store')                   # by default, methods=['GET'] | # yahan is route par directly aaye hain. via POST nahi X.
 def get_all_store_name():
     return jsonify({'stores': stores})
 
